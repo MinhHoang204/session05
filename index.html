@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    The word is: *****
+    <br>
+    <input type="text" id="input"> Remaining guess: 5
+    <br>
+    <button id="button">Guess</button>
+    <script>
+        let start = document.getElementById("start");
+        let input = document.getElementById("input");
+        let button = document.getElementById("button");
+        let number = document.getElementById("number");
+        button.addEventListener("click", checkDapAn);
+        function game() {
+            let text= ""
+            let arr = ["hoa", "hao", "han", "nam", "anh", "tan", "thu", "tai", "tho"]
+            let random = arr[Math.floor(Math.random()*9)];
+            console.log(random);
+            for (let i = 0; i < random.length; i++) {
+                text = "";
+            }
+            hide.innerHTML = text;
+            let i = 5;
+            number.innerHTML = i;
+            button.addEventListener("click", checkDapAn);
+            function checkDapAn(){
+                if(input.value === "") {
+                    alert ("Vui long nhap du lieu");
+                    return;
+                } else if (input.value == random) {
+                    start.innerHTML = input.value;
+                    input.value = "";
+                    game.style.display = "block";
+                    button.style.display = "none";
+                    alert("Chúc mừng, bạn đã đoán đúng!");
+                } else {
+                    i--;
+                    number.innerHTML = i;
+                    if (i === 0) {
+                        hide.innerHTML = random;
+                        input.value = "";
+                        button.disabled = true;
+                        alert("Rất tiếc, bạn đã hết lượt đoán!");
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>
